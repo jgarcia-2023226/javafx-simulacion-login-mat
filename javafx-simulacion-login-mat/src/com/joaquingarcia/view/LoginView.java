@@ -48,10 +48,13 @@ public class LoginView extends BorderPane {
     private VBox cajaVetical;
     
     private ImageView imgLogoLogin;
-
+    
+    private final String RUTA_ESTILOS = "/com/joaquingarcia/styles/";
     
 
     private LoginView() {
+        this.getStylesheets().add(RUTA_ESTILOS + "LoginStyles.css");
+        
         this.setPadding(new Insets(20));
 
         this.setBorder(new Border(

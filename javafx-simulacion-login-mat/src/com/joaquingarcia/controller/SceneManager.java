@@ -4,10 +4,12 @@
  */
 package com.joaquingarcia.controller;
 
+import com.joaquingarcia.view.BienvenidaView;
 import com.joaquingarcia.view.LoginView;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
@@ -53,6 +55,26 @@ public class SceneManager {
             this.escenaPrincipal.setFill(Color.TRANSPARENT);
             new LoginController(login);
         } catch (NullPointerException objetoNulo) {
+            JOptionPane.showMessageDialog(null, "Error de objeto nulo : ventanaLogin");
+            objetoNulo.printStackTrace();
+        } catch (Exception errorPadre) {
+            JOptionPane.showMessageDialog(null, "Error padre : ventanaLogin");
+            errorPadre.printStackTrace();
+        }
+    }
+    
+    public void ventanaBienvenida(){
+        try{
+            escenarioSecundario = new Stage();
+            this.escenarioSecundario.initStyle(StageStyle.TRANSPARENT);
+            this.escenarioSecundario.initModality(Modality.APPLICATION_MODAL);
+            
+            BienvenidaView bienvenida = new BienvenidaView();
+            escenaPrincipal = new Scene(bienvenida,200,300);
+            this.escenarioSecundario.setScene(escenaPrincipal);
+            this.escenarioSecundario.sizeToScene();
+            this.escenarioSecundario.showAndWait();
+        }catch (NullPointerException objetoNulo) {
             JOptionPane.showMessageDialog(null, "Error de objeto nulo : ventanaLogin");
             objetoNulo.printStackTrace();
         } catch (Exception errorPadre) {
