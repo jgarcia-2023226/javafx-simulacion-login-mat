@@ -77,6 +77,8 @@ public class LoginController {
             } else if (password.isEmpty()) {
                 this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().remove("error");
                 this.LOGIN_VIEW.getPwdClave().getStyleClass().add("empty");
+                this.LOGIN_VIEW.getPwdClave().getStyleClass().remove("empty");
+                this.LOGIN_VIEW.getPwdClave().getStyleClass().add("error");
                 JOptionPane.showMessageDialog(null,
                         "NO DEJE EL CAMPO CONTRASEÑA VACIO");
             };
@@ -88,7 +90,7 @@ public class LoginController {
 
         if (usuarioLogin != null) {
 
-            JOptionPane.showMessageDialog(null, "Bienvenido " + usuarioLogin.getNombreCompleto());
+            SceneManager.getInstanciaSceneManager().ventanaBienvenida(usuarioLogin);
 
         } else {
 

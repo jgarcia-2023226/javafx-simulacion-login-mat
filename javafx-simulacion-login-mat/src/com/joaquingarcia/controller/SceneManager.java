@@ -4,6 +4,7 @@
  */
 package com.joaquingarcia.controller;
 
+import com.joaquingarcia.model.Usuario;
 import com.joaquingarcia.view.BienvenidaView;
 import com.joaquingarcia.view.LoginView;
 import javafx.scene.Scene;
@@ -63,14 +64,15 @@ public class SceneManager {
         }
     }
     
-    public void ventanaBienvenida(){
+    public void ventanaBienvenida(Usuario usuario){
         try{
             escenarioSecundario = new Stage();
             this.escenarioSecundario.initStyle(StageStyle.TRANSPARENT);
             this.escenarioSecundario.initModality(Modality.APPLICATION_MODAL);
             
-            BienvenidaView bienvenida = new BienvenidaView();
-            escenaPrincipal = new Scene(bienvenida,200,300);
+            
+            BienvenidaView bienvenida = new BienvenidaView(usuario);
+            escenaPrincipal = new Scene(bienvenida,500,300);
             this.escenarioSecundario.setScene(escenaPrincipal);
             this.escenarioSecundario.sizeToScene();
             this.escenarioSecundario.showAndWait();
